@@ -41,11 +41,11 @@ INSTALLED_APPS = [
     'customer',
     'registration',
     'cart',
-    # 'order',
     'orders',
     'payment',
     'customer_service',
     'reviews',
+    'delivery',
 ]
 
 MIDDLEWARE = [
