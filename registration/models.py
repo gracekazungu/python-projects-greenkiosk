@@ -2,6 +2,8 @@ from django.db import models
 
 # Create your models here.
 class Signup(models.Model):
+    class Meta:
+        verbose_name_plural = "signup"
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     phone = models.CharField(max_length=13)
@@ -24,6 +26,8 @@ class Signup(models.Model):
 
 
 class Login(models.Model):
+    class Meta:
+        verbose_name_plural = "login"
     user_name = models.CharField(max_length=50)
     email = models.EmailField()
     password = models.CharField(max_length=50)
