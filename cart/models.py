@@ -1,5 +1,5 @@
 from django.db import models
-
+from inventory.models import Product
 # Create your models here.
 class Cart(models.Model):
     class Meta:
@@ -10,6 +10,8 @@ class Cart(models.Model):
     discount=models.DecimalField(max_digits=8,decimal_places=2)
     quantity=models.PositiveIntegerField(default=1)
     description=models.TextField()
+    products=models.ManyToManyField(Product)
+
     def addProduct(request):
         user = request.user
         product_id = request.GET.get('product_id')

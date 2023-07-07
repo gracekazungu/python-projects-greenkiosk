@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 # Create your models here.
 class Customer(models.Model):
     first_name = models.CharField(max_length=50)
@@ -8,6 +8,7 @@ class Customer(models.Model):
     phone = models.CharField(max_length=13)
     email = models.EmailField()
     password = models.CharField(max_length=50)
+    user=models.OneToOneField(User,null=True,on_delete=models.CASCADE)
 
     
     def register_customer(self):

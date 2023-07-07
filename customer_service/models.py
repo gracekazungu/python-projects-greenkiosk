@@ -13,3 +13,4 @@ class Ticket(models.Model):
     feedback_and_suggestions = models.TextField()
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
+
