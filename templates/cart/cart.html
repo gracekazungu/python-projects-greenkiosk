@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+        .product-container {
+            border: 1px solid #ccc;
+            padding: 10%;
+            margin-bottom: 10px;
+        }
+   .allcustomers{
+            display: grid;
+            grid-template-columns: repeat(5,1fr);
+            gap: 30px;
+        }
+</style>
+<body>
+        <h2>Cart</h2>
+        <div class="allcustomers">
+        {% for item in items %}
+        <div class="product-container">
+            <img src="{{ item.image.url }}" alt="{{ item.name }}"/>
+            <h1 class="item-name">{{ item.name }}</h1>
+            <h4 class="item-price">Ksh {{ item.price }}</h4>
+            <h4 class="item-name">Quantity: {{ item.quantity }}</h4>
+
+            <a href="{% url 'product_update' id=item.id %}">Update</a><br>
+            <a href="{% url 'product_delete' item.id %}">Remove</a><br>
+        </div>
+    {% endfor %}
+</div>
+</body>
+</html>

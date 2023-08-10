@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+<title>Customers List</title>
+    <style>
+        /* Add your custom CSS styling here */
+        .customer-container {
+            border: 1px solid #ccc;
+            padding: 10%;
+            margin-bottom: 10px;
+        }
+        .view-details {
+            font-size: 14px;
+            color: blue;
+        }
+        .allcustomers{
+            display: grid;
+            grid-template-columns: repeat(5,1fr);
+            gap: 30px;
+        }
+        .img{
+            width: 300px;
+            height: 300px;
+            border-radius: 100%;
+        }
+        .header{
+            font-weight: bold;
+            font-size: 60px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="header">Customers List</h1>
+    <div class="allcustomers">
+    {% for customer in customers %}
+        <div class="customer-container">
+            <img src="{{customer.image.url}}" class="img"/>
+            <h1 class="customer-name">{{ customer.first_name }} {{customer.last_name}}</h1>
+             <a href="{% url 'customer_detail_view' id=customer.id %}">View Details</a><br><br>
+             <a href="{% url 'customer_update' id=customer.id %}">Edit</a><br><br>
+             <a href="{% url 'customer_delete' customer.id %}">Delete</a>
+        </div>
+    {% endfor %}
+</div>
+</body>
+</html>
