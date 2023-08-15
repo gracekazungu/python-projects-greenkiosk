@@ -27,7 +27,7 @@
             <h4 class="item-price">Ksh {{ item.price }}</h4>
             <h4 class="item-name">Quantity: {{ item.quantity }}</h4>
 
-            <a href="{% url 'product_update' id=item.id %}">Update</a><br>
+            <a href="{% url 'update_product' id=item.id %}">Update</a><br>
             <a href="{% url 'product_delete' item.id %}">Remove</a><br>
         </div>
     {% endfor %}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delivery List</title>
+    <style>
+            .delivery{
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 30px;
+        }
+        .delivery-container {
+            border: 1px solid #ccc;
+            padding: 10%;
+            margin-bottom: 10px;
+        }
+        h1{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Delivery List</h1>
+    <div class="delivery">
+        {% for delivery in deliveries %}
+            <div class="delivery-container">
+                <h3>Name: {{ delivery.name }}</h3>
+                <p>Address: {{ delivery.address }}</p>
+                <p>Phone Number: {{ delivery.phone_number }}</p>
+                <p>Distance: {{ delivery.distance }}</p>
+                <p>Delivery fee: ${{ delivery.calculate_delivery_fee }}</p>
+                <a href="{% url 'delivery:delivery_detail' delivery.id %}">View Details</a>
+                </div>
+        {% endfor %}
+        </div>
+</body>
+</html>

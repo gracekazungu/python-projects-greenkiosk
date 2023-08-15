@@ -60,7 +60,7 @@ def add_to_cart(request, product_id):
     cart = request.session['cart']
     cart.append({'id': product.id, 'name': product.name, 'price': str(product.price)})
     request.session.modified = True
-    return redirect('product_list')
+    return redirect('product_list_view')
 
 def view_cart(request):
     cart = request.session.get('cart', [])
