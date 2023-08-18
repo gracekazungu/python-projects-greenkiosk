@@ -62,6 +62,7 @@
         <p><strong>Order Status:</strong> {{ order.get_order_status_display }}</p>
         <div class="edit-button">
             <a href="{% url 'edit_order' order.order_number %}">Edit Order</a>
+            <a href="{% url 'checkout' %}">Proceed To Payment</a>
         </div>
     </div>
 </body>

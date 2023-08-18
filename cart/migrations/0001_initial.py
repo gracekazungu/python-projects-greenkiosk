@@ -15,12 +15,13 @@ class Migration(migrations.Migration):
             name='Cart',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('items_name', models.CharField(max_length=32)),
-                ('price', models.DecimalField(decimal_places=2, max_digits=8)),
-                ('number_of_items', models.PositiveIntegerField(default=1)),
-                ('discount', models.DecimalField(decimal_places=2, max_digits=8)),
+                ('name', models.CharField(max_length=32,null=True)),
+                ('image', models.ImageField(upload_to='images/', blank=True, null=True)),
+                ('price', models.DecimalField(decimal_places=2, max_digits=8,default=0)),
                 ('quantity', models.PositiveIntegerField(default=1)),
+                ('total_price', models.DecimalField(max_digits=8, decimal_places=2, default=0)),
                 ('description', models.TextField()),
             ],
         ),
     ]
+  

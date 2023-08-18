@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up Page</title>
+    <style>
+      form{
+        text-align: center;
+      }
+      h2{
+        text-align: center;
+      }
+      p{
+        text-align: center;
+      }
+      button{
+        padding: auto;
+        border-radius: 5px;
+        background-color: blue;
+        color: wheat;
+      }
+      form input{
+        border-radius: 5px;
+        padding: 5px;
+      }
+
+    </style>
+</head>
+<body>
+{% block content %}
+  <h2>Signup</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Sign Up</button>
+  </form>
+  <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p><br><br>
+  <a href="{% url 'order_list' %}" class="btn btn-primary">Continue</a><br><br>
+
+{% endblock %}
+
+</body>
+</html>

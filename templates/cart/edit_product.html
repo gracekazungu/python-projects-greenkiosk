@@ -16,7 +16,7 @@
 <body>
     <h1>Edit Product Cart Details</h1>
     <form method="POST" class="edit_form">
-        <img src="{{item.image.url}}"/>
+        <!-- <img src="{{product.image.url}}"/> -->
         {%csrf_token%}
         <!-- condition -->
         {{form.as_p}}

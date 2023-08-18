@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cart</title>
 </head>
 <style>
         .product-container {
@@ -22,13 +22,15 @@
         <div class="allcustomers">
         {% for item in items %}
         <div class="product-container">
-            <img src="{{ item.image.url }}" alt="{{ item.name }}"/>
+            <!-- <img src="{{ item.Product.image.url }}" alt="{{ item.name }}"/> -->
             <h1 class="item-name">{{ item.name }}</h1>
             <h4 class="item-price">Ksh {{ item.price }}</h4>
             <h4 class="item-name">Quantity: {{ item.quantity }}</h4>
 
             <a href="{% url 'update_product' id=item.id %}">Update</a><br>
             <a href="{% url 'product_delete' item.id %}">Remove</a><br>
+            <a href="{% url 'login' %}">Proceed to Checkout</a>
+            <!-- <a href="{% url 'checkout' %}" class="btn btn-primary">Proceed to Checkout</a><br><br> -->
         </div>
     {% endfor %}
 </div>

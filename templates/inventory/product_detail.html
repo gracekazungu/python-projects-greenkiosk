@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Product Details</title>
 
     <style>
           .product-container {
@@ -43,86 +43,30 @@
 </head>
 
 <div class="product-container">
-  <img src="{{ product.image.url }}" alt="{{ product.name }}"/>
+{% block content %}
+<img src="{{ product.image.url }}" alt="{{ product.name }}"/>
+<h1 class="product-name">{{ product.name }}</h1>
+<h4 class="product-description">Product description: {{ product.description }}</h4>
+<h4 class="product-price">Ksh {{ product.price }}</h4>
+<h4 class="product_stock">Stock Available: {{ product.stock }}</h4>
 
-  <h1 class="product-name">{{ product.name }}</h1>
-  <h4 class="product-description">Product description: {{ product.description }}</h4>
-  <h4 class="product-price">Ksh {{ product.price }}</h4>
-  <h4 class="product_stock">Stock Available: {{ product.stock }}</h4>
-  <button><a href="{% url 'product_list_view' %}">Add to Cart</a></button><br><br>
-  <!-- <button onclick="addToCart()">Add to Cart</button> -->
+  <!-- Add the "Add to Cart" form here -->
+  <form method="post" action="{% url 'add_to_cart' product.id %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Add to Cart</button>
+  </form>
+  <!-- <a href="{% url 'product_list_view' %}">Add To Cart</a><br><br> -->
+  <a href="{% url 'products_list_view' %}">Back to Products</a><br><br>
+  
+  <a href="{% url 'login' %}">Checkout</a><br><br>
   <a href="{% url 'product_list_view' %}">View Cart</a>
+
+{% endblock %}
+
 </div>
 
-<!-- <script>
-  function addToCart() {
-    console.log("Adding product to cart...");
 
-    // Replace 'your_add_to_cart_url' with the actual URL to your Django view handling the add to cart request
-    const addToCartURL = "{% url 'add_to_cart' product.id %}";
-
-    fetch(addToCartURL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "X-CSRFToken": "{{ csrf_token }}"
-      },
-      body: JSON.stringify({})
-    })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error("Network response was not ok.");
-      }
-      return response.json();
-    })
-    .then(data => {
-      console.log("Response from server:", data);
-      alert(data.message);
-    })
-    .catch(error => {
-      console.error("Error adding product to cart:", error);
-      alert("Failed to add the product to the cart.");
-    });
-  }
-</script> -->
-
-
-
-<!-- <div class="product-container">
-  <img src="{{ product.image.url }}" alt="{{ product.name }}"/>
-
-  <h1 class="product-name">{{ product.name }}</h1>
-  <h4 class="product-description">Product description: {{ product.description }}</h4>
-  <h4 class="product-price">Ksh {{ product.price }}</h4>
-  <h4 class="product_stock">Stock Available: {{ product.stock }}</h4>
-  <button><a href="{% url 'add_to_cart' product.id %}">Add to Cart</a></button>
-  <a href="{% url 'view_cart' %}">View Cart</a>
-</div>
-
-<script>
-  function addToCart() {
-    console.log("Adding product to cart...");
-
-    fetch("{% url 'add_to_cart' product.id %}", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "X-CSRFToken": "{{ csrf_token }}"
-        },
-        body: JSON.stringify({})
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log("Response from server:", data);
-        alert(data.message);
-    })
-    .catch(error => {
-        console.error("Error adding product to cart:", error);
-        alert("Failed to add the product to the cart.");
-    });
-}
-
-</script> -->
 
 </body>
 </html>

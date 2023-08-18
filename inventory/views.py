@@ -49,30 +49,4 @@ def delete_product(request, id):
     # If the request method is not POST, render a confirmation page.
     return render(request, 'inventory/confirmation_page.html', {'product': product})
 
-# def delete_product(request,id):
-#     product=Product.objects.get(id=id)
-#     product.delete()
-#     return redirect("products_list_view")
 
-def add_to_cart(request, product_id):
-    product = get_object_or_404(Product, id=product_id)
-    request.session.setdefault('cart', [])
-    cart = request.session['cart']
-    cart.append({'id': product.id, 'name': product.name, 'price': str(product.price)})
-    request.session.modified = True
-    return redirect('product_list_view')
-
-def view_cart(request):
-    cart = request.session.get('cart', [])
-    return render(request, 'cart/cart.html', {'cart': cart})
-
-def remove_from_cart(request, product_id):
-    product = get_object_or_404(Product, id=product_id)
-    cart = request.session.get('cart', [])
-    for item in cart:
-        if item['id'] == product.id:
-            cart.remove(item)
-            break
-    request.session['cart'] = cart
-    request.session.modified = True
-    return redirect('view_cart')

@@ -3,7 +3,9 @@ from.models import Cart
 
 
 # forms.py
-class UploadProductForm(forms.ModelForm):
+class UploadCartForm(forms.ModelForm):
     class Meta:
         model = Cart
-        fields = '__all__'  # Adjust fields as needed
+        fields = '__all__'  
+
+
